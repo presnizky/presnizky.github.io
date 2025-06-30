@@ -23,6 +23,7 @@ Text Domain: darkjoe
 * 07.0 - Contact
 * 08.0 - Footer
 * 09.0 - Responsive Fixes
+* 10.0 - Google Material Icons
 * -----------------------------------------------------------------------------
 */
 
@@ -296,9 +297,13 @@ header{
 	color: #fff;
 }
 
-.port figcaption span:before {
-	content: 'by ';
+.port figcaption h4 {
+	margin: 0px 0px 6px 0px;
+	padding: 0;
+	color: #fff;
 }
+
+
 
 .port figcaption a {
 	text-align: center;
@@ -505,7 +510,7 @@ header{
     margin: 0 auto;
     margin-bottom: 30px;
 }
-.scoialinks {
+.socialinks {
     list-style: none;
     text-align: center;
     padding: 0;
@@ -526,6 +531,9 @@ header{
 }
 .facebook{
 	background-image: url(../images/facebook.png);
+}
+.instagram{
+	background-image: url(../images/instagram.png);
 }
 .twitter{
 	background-image: url(../images/twitter.png);
@@ -579,7 +587,7 @@ footer {
 		font-size: 3em;
 	}
 	.bigheadline {
-		font-size: 15em;
+		font-size: 12em;
 	}
 	.subheadline {
 		font-size: 5em;
@@ -705,3 +713,19 @@ footer {
 	    left: 44%;
 	}
 }
+
+/* ///////////////////////////////////////////////////////////////////// 
+//  10 - Google Material Icons 
+/////////////////////////////////////////////////////////////////////*/
+.material-symbols-outlined {
+  font-size: 72px; /* Ajusta este valor al tamaño que necesites (ej. 36px, 60px, etc.) */
+  /* Si necesitas que sea más grueso o fino, también puedes ajustar: */
+  font-weight: 400; /* Valores comunes: 100 (fino) a 700 (grueso) */
+  /* Si quieres el icono relleno o delineado, puedes usar: */
+  font-variation-settings:
+    'FILL' 0, /* 0 para delineado, 1 para relleno */
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 72; /* Tamaño óptico, suele coincidir con font-size */
+}
+
