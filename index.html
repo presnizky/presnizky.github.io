@@ -1,343 +1,379 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-
-<html class="no-js"> <!--<![endif]-->
-
+<html>
 <head>
-    <title>Sonic Rebel Studio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sonic Rebel Studio: Elevate your sound from raw vision to legendary production. Specializing in rock, punk, hard rock, and metal.">
+    <title>Sonic Rebel Studio | Where Your Music Becomes Legend</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Inter:wght@300;400;600;700&display=swap');
 
-    <!-- meta -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        body {
+            font-family: 'Inter', sans-serif;
+        }
 
-    <!-- stylesheets -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="assets/css/owl.carousel.css">
-    <link rel="stylesheet" href="assets/css/owl.theme.css">
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/font_icon/css/pe-icon-7-stroke.css">
-    <link rel="stylesheet" href="assets/font_icon/css/helper.css">
+        .font-heading {
+            font-family: 'Orbitron', sans-serif;
+        }
 
-    <!-- google fonts -->
-    <link
-        href='http://fonts.googleapis.com/css?family=Dosis:200,300,400,500|Lato:300,400,700,900,300italic,400italic,700italic,900italic|Raleway:400,200,300,500,100|Titillium+Web:400,200,300italic,300,200italic'
-        rel='stylesheet' type='text/css'>
+        .neon-glow {
+            text-shadow: 0 0 5px #f87171, 0 0 10px #f87171, 0 0 15px #f87171, 0 0 20px #dc2626;
+        }
 
-    <script src="assets/js/modernizr.js"></script>
-    <script src="https://kit.fontawesome.com/f9ba6b3b47.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-    </script>
+        .scroll-snap-y {
+            scroll-snap-type: y mandatory;
+        }
+
+        .scroll-snap-section {
+            scroll-snap-align: start;
+        }
+
+        .animated-gradient {
+            background: linear-gradient(270deg, #1a202c, #2d3748, #1a202c);
+            background-size: 600% 600%;
+            animation: gradient-animation 15s ease infinite;
+        }
+
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glassmorphism {
+            background: rgba(45, 55, 72, 0.5); /* bg-gray-700 with opacity */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(74, 85, 104, 0.3); /* border-gray-600 with opacity */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Custom scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a202c; /* dark background */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #4a5568; /* grey thumb */
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b7280; /* lighter grey on hover */
+        }
+
+        .text-outline-white {
+            text-shadow:
+                1px 1px 0 #fff,
+                -1px -1px 0 #fff,
+                1px -1px 0 #fff,
+                -1px 1px 0 #fff;
+        }
+
+        .text-outline-black {
+            text-shadow:
+                1px 1px 0 #000000,
+                -1px -1px 0 #000000,
+                1px -1px 0 #000000,
+                -1px 1px 0 #000000;
+        }
+
+        .hero-bg {
+            background-image: url('../assets/images/band-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 antialiased scroll-snap-y">
+
+    <!-- Global Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-gray-900 bg-opacity-90 backdrop-blur-md shadow-lg" x-data="{ open: false }">
+        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#hero" class="text-3xl font-bold font-heading text-red-500 tracking-wide">
+                Sonic Rebel Studio
+            </a>
+            <button @click="open = !open" class="md:hidden text-gray-100 focus:outline-none">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+            <nav :class="{'hidden': !open, 'block': open}" class="absolute top-full left-0 w-full bg-gray-900 bg-opacity-95 md:relative md:block md:bg-transparent md:w-auto">
+                <ul class="flex flex-col md:flex-row md:space-x-8 p-6 md:p-0">
+                    <li><a href="#hero" @click="open = false" class="block py-3 px-4 text-lg text-gray-300 hover:text-red-400 hover:bg-gray-800 md:hover:bg-transparent transition duration-300">Home</a></li>
+                    <li><a href="#services" @click="open = false" class="block py-3 px-4 text-lg text-gray-300 hover:text-red-400 hover:bg-gray-800 md:hover:bg-transparent transition duration-300">Servicios</a></li>
+                    <li><a href="#portfolio" @click="open = false" class="block py-3 px-4 text-lg text-gray-300 hover:text-red-400 hover:bg-gray-800 md:hover:bg-transparent transition duration-300">Portfolio</a></li>
+                    <li><a href="#contact" @click="open = false" class="block py-3 px-4 text-lg text-gray-300 hover:text-red-400 hover:bg-gray-800 md:hover:bg-transparent transition duration-300">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="relative h-screen flex items-center justify-center text-center overflow-hidden scroll-snap-section animated-gradient hero-bg"">
+            <div class="absolute inset-0 bg-black opacity-50 z-10"></div>
+            <div class="relative z-20 p-8 max-w-4xl mx-auto">
+                <h1 class="text-6xl md:text-8xl font-extrabold font-heading text-red-500 leading-tight mb-6">
+                    Sonic Rebel Studio
+                </h1>
+                <p class="text-2xl md:text-3xl text-gray-300 tracking-wide mb-12">
+                    Donde tu música se convierte en leyenda.
+                </p>
+                <a href="#services" class="inline-flex items-center justify-center px-10 py-4 border border-red-500 text-lg font-semibold text-red-500 rounded-full hover:bg-red-500 hover:text-gray-900 transition duration-500 ease-in-out transform hover:scale-105 shadow-lg">
+                    Servicios <i data-lucide="arrow-down" class="ml-3 w-6 h-6"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 bg-gray-900 scroll-snap-section">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-5xl font-heading text-red-500 mb-12">Nuestros Servicios</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div class="glassmorphism p-8 rounded-lg shadow-xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-2">
+                        <div class="text-red-400 mb-6">
+                            <i data-lucide="music" class="w-16 h-16 mx-auto"></i>
+                        </div>
+                        <h3 class="text-3xl font-heading text-gray-100 mb-4">Producción</h3>
+                        <p class="text-gray-300 leading-relaxed">Convertimos tu visión en un sonido potente, desde la concepción hasta la entrega final.</p>
+                    </div>
+                    <div class="glassmorphism p-8 rounded-lg shadow-xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-2">
+                        <div class="text-red-400 mb-6">
+                            <i data-lucide="audio-lines" class="w-16 h-16 mx-auto"></i>
+                        </div>
+                        <h3 class="text-3xl font-heading text-gray-100 mb-4">Mezcla</h3>
+                        <p class="text-gray-300 leading-relaxed">Elevamos cada instrumento, dándole a tu música la pegada, espacialidad y claridad que merece.</p>
+                    </div>
+                    <div class="glassmorphism p-8 rounded-lg shadow-xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-2">
+                        <div class="text-red-400 mb-6">
+                            <i data-lucide="speaker" class="w-16 h-16 mx-auto"></i>
+                        </div>
+                        <h3 class="text-3xl font-heading text-gray-100 mb-4">Mastering</h3>
+                        <p class="text-gray-300 leading-relaxed">Optimizamos tu sonido para que suene enorme, consistente y competitivo en cualquier plataforma de distribución.</p>
+                    </div>
+                    <div class="glassmorphism p-8 rounded-lg shadow-xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-2">
+                        <div class="text-red-400 mb-6">
+                            <i data-lucide="scissors-square" class="w-16 h-16 mx-auto"></i>
+                        </div>
+                        <h3 class="text-3xl font-heading text-gray-100 mb-4">Edición</h3>
+                        <p class="text-gray-300 leading-relaxed">Perfeccionamos tus tomas, ajustando voces, instrumentos y ritmos para una ejecución impecable.</p>
+                    </div>
+                    <div class="glassmorphism p-8 rounded-lg shadow-xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-2">
+                        <div class="text-red-400 mb-6">
+                            <i data-lucide="drum" class="w-16 h-16 mx-auto"></i>
+                        </div>
+                        <h3 class="text-3xl font-heading text-gray-100 mb-4">Programación</h3>
+                        <p class="text-gray-300 leading-relaxed">Creamos baterías MIDI demoledoras y realistas, aportando la base rítmica perfecta para tu track.</p>
+                    </div>
+                     <div class="glassmorphism p-8 rounded-lg shadow-xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-2">
+                        <div class="text-red-400 mb-6">
+                            <i data-lucide="rocket" class="w-16 h-16 mx-auto"></i>
+                        </div>
+                        <h3 class="text-3xl font-heading text-gray-100 mb-4">Lanzamiento</h3>
+                        <p class="text-gray-300 leading-relaxed">Te guiamos en el proceso de distribución y promoción para que tu música llegue a la audiencia correcta.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-20 bg-gray-800 scroll-snap-section">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-5xl font-heading text-red-500 mb-12">Portfolio</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Portfolio Item 1 -->
+                    <div class="glassmorphism p-6 rounded-lg shadow-xl flex flex-col items-center">
+                        <div class="w-full h-80 bg-gray-700 rounded-md overflow-hidden mb-6 flex items-center justify-center relative">
+                            <iframe width="100%" height="100%" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2121643917%3Fsecret_token%3Ds-cbCl8jtwVqG&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true" class="absolute inset-0 w-full h-full"></iframe>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-gray-100 mb-2">Phartener - Buenas Decisiones</h3>
+                        <p class="text-red-400 text-lg mb-4">Producción - Edición - Mezcla - Master</p>
+                    </div>
+                    <!-- Portfolio Item 2 -->
+                    <div class="glassmorphism p-6 rounded-lg shadow-xl flex flex-col items-center">
+                        <div class="w-full h-80 bg-gray-700 rounded-md overflow-hidden mb-6 flex items-center justify-center relative">
+                            <iframe width="100%" height="100%" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2121636009%3Fsecret_token%3Ds-fmejDqUJdnI&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true" class="absolute inset-0 w-full h-full"></iframe>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-gray-100 mb-2">Edu Vargas - Dejate Llevar</h3>
+                        <p class="text-red-400 text-lg mb-4">Remix</p>
+                    </div>
+                    <!-- Portfolio Item 3 -->
+                    <div class="glassmorphism p-6 rounded-lg shadow-xl flex flex-col items-center">
+                        <div class="w-full h-80 bg-gray-700 rounded-md overflow-hidden mb-6 flex items-center justify-center relative">
+                            <iframe width="100%" height="100%" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2121642396%3Fsecret_token%3Ds-9B74m3pTiMd&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true" class="absolute inset-0 w-full h-full"></iframe>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-gray-100 mb-2">Phartener - Ella En Su Lugar</h3>
+                        <p class="text-red-400 text-lg mb-4">Producción - Edición - Mezcla - Master</p>
+                    </div>
+                    <!-- Portfolio Item 4 -->
+                    <div class="glassmorphism p-6 rounded-lg shadow-xl flex flex-col items-center">
+                        <div class="w-full h-80 bg-gray-700 rounded-md overflow-hidden mb-6 flex items-center justify-center relative">
+                            <iframe width="100%" height="100%" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2081788395%3Fsecret_token%3Ds-tTwQyrQJnPq&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true" class="absolute inset-0 w-full h-full"></iframe>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-gray-100 mb-2">John McKay - Daisy Daisy</h3>
+                        <p class="text-red-400 text-lg mb-4">Remix</p>
+                    </div>
+                    <!-- Portfolio Item 5 -->
+                    <div class="glassmorphism p-6 rounded-lg shadow-xl flex flex-col items-center">
+                        <div class="w-full h-80 bg-gray-700 rounded-md overflow-hidden mb-6 flex items-center justify-center relative">
+                            <iframe width="100%" height="100%" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1958696899%3Fsecret_token%3Ds-YCpHllVmect&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true" class="absolute inset-0 w-full h-full"></iframe>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-gray-100 mb-2">Shecky &amp; the Pimp Monkeys - Volkswagen Blondes</h3>
+                        <p class="text-red-400 text-lg mb-4">Remix</p>
+                    </div>
+                    <!-- Call to action for more portfolio -->
+                    <div class="glassmorphism p-6 rounded-lg shadow-xl flex flex-col items-center justify-center text-center">
+                        <i data-lucide="disc-3" class="w-20 h-20 text-red-500 mb-6"></i>
+                        <h3 class="text-3xl font-heading text-gray-100 mb-4">¿Listo para llevar tu música al próximo nivel?</h3>
+                        <p class="text-gray-300 mb-6">Explora nuestros trabajos y contactanos para tu próximo proyecto.</p>
+                        <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 border border-red-500 text-md font-semibold text-red-500 rounded-full hover:bg-red-500 hover:text-gray-900 transition duration-300 ease-in-out">
+                            Enviar mensaje <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action / Testimonials Section
+        <section class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-5xl font-heading text-red-500 mb-12">Lo Que Dicen Nuestros Artistas</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                    <div class="glassmorphism p-8 rounded-lg shadow-xl">
+                        <div class="flex items-center justify-center mb-6">
+                            <div class="w-20 h-20 rounded-full bg-gray-700 flex items-center justify-center text-red-400 text-xl font-heading overflow-hidden">
+                                <i data-lucide="user" class="w-12 h-12"></i>
+                            </div>
+                        </div>
+                        <p class="text-xl italic text-gray-300 mb-4">"Sonic Rebel Studio transformó mi música. La calidad y el profesionalismo son inigualables. ¡Mi sonido nunca había sido tan potente!"</p>
+                        <p class="font-bold text-red-400">- Artista Rebelde A</p>
+                        <p class="text-gray-400">Cantante de Punk Rock</p>
+                    </div>
+                    <div class="glassmorphism p-8 rounded-lg shadow-xl">
+                        <div class="flex items-center justify-center mb-6">
+                            <div class="w-20 h-20 rounded-full bg-gray-700 flex items-center justify-center text-red-400 text-xl font-heading overflow-hidden">
+                                <i data-lucide="user" class="w-12 h-12"></i>
+                            </div>
+                        </div>
+                        <p class="text-xl italic text-gray-300 mb-4">"Desde la producción hasta el mastering, trabajaron con una dedicación asombrosa. ¡Recomiendo Sonic Rebel a cualquier banda que busque un sonido profesional!"</p>
+                        <p class="font-bold text-red-400">- Banda Pesada X</p>
+                        <p class="text-gray-400">Banda de Metal Core</p>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gray-800 scroll-snap-section">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-5xl font-heading text-red-500 mb-12">Contactanos</h2>
+                <div class="flex flex-col lg:flex-row gap-10">
+                    <div class="lg:w-1/2 glassmorphism p-8 rounded-lg shadow-xl text-left">
+                        <p class="text-gray-300 mb-6 text-lg leading-relaxed">
+                            ¿Listo para llevar tu sonido al siguiente nivel? En Sonic Rebel Studio, estamos listos
+                            para escucharte y transformar tu visión en una producción legendaria. Ya sea rock, punk,
+                            hard rock o metal, queremos ser parte de tu próximo gran lanzamiento.
+                        </p>
+                        <p class="text-gray-300 mb-6 text-lg leading-relaxed">
+                            Contactanos hoy mismo para más información, consultar tarifas o simplemente charlar
+                            sobre cómo podemos hacer que tu música suene potente y profesional.
+                        </p>
+                        <p class="text-red-400 font-bold text-xl mb-8">
+                            ¡Tu leyenda comienza aquí!
+                        </p>
+                        <ul class="space-y-4 text-gray-200">
+                            <li class="flex items-center text-lg">
+                                <i data-lucide="mail" class="w-6 h-6 mr-3 text-red-400"></i>
+                                <span>sonicrebelstudio@gmail.com</span>
+                            </li>
+                            <li class="flex items-center text-lg">
+                                <i data-lucide="globe" class="w-6 h-6 mr-3 text-red-400"></i>
+                                <a href="http://www.sonicrebelstudio.com.ar" target="_blank" class="hover:text-red-400 transition duration-300">www.sonicrebelstudio.com.ar</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="lg:w-1/2 glassmorphism p-8 rounded-lg shadow-xl text-left">
+                        <h3 class="text-3xl font-heading text-gray-100 mb-6">Envíanos un mensaje</h3>
+                        <form id="contactForm" class="space-y-6">
+                            <div>
+                                <label for="name" class="sr-only">Nombre</label>
+                                <input type="text" class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500" name="name" id="name" placeholder="Tu Nombre" required>
+                            </div>
+                            <div>
+                                <label for="email" class="sr-only">Email</label>
+                                <input type="email" class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500" name="email" id="email" placeholder="Tu Email" required>
+                            </div>
+                            <div>
+                                <label for="message" class="sr-only">Mensaje</label>
+                                <textarea name="message" id="message" class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 h-32 resize-y" placeholder="Tu Mensaje" required></textarea>
+                            </div>
+                            <button type="submit" class="w-full px-8 py-4 bg-red-600 text-white font-bold rounded-md hover:bg-red-700 transition duration-300 transform hover:scale-105 shadow-lg">
+                                Enviar Mensaje
+                            </button>
+                            <p id="formStatus" class="text-center mt-4 text-sm"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Media Section -->
+        <section id="social" class="py-10 bg-gray-900 border-t border-gray-700">
+            <div class="container mx-auto px-6 text-center">
+                <h3 class="text-3xl font-heading text-gray-300 mb-6">Nuestras Redes</h3>
+                <div class="flex justify-center space-x-8">
+                    <a href="https://www.facebook.com/SonicRebelStudio" target="_blank" class="text-gray-400 hover:text-red-500 transition duration-300 transform hover:scale-110">
+                        <i data-lucide="facebook" class="w-12 h-12"></i>
+                    </a>
+                    <a href="https://www.instagram.com/sonicrebelstudio" target="_blank" class="text-gray-400 hover:text-red-500 transition duration-300 transform hover:scale-110">
+                        <i data-lucide="instagram" class="w-12 h-12"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-gray-950 text-center text-gray-400 text-sm">
+        <div class="container mx-auto px-6">
+            <p>&copy; 2025 Sonic Rebel Studio.</p>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
         (function () {
             emailjs.init({
                 publicKey: "BA0HY3yhoAKHzjrQy",
             });
         })();
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formStatus = document.getElementById('formStatus');
+            formStatus.textContent = 'Sending...';
+            formStatus.className = 'text-center mt-4 text-sm text-gray-400';
+
+            emailjs.sendForm('service_04gkcx7', 'template_w9t9etd', this)
+                .then(function() {
+                    formStatus.textContent = 'Mensaje enviado!';
+                    formStatus.className = 'text-center mt-4 text-sm text-green-500';
+                    document.getElementById('contactForm').reset();
+                }, function(error) {
+                    formStatus.textContent = 'Hubo un error al enviar el mensaje.';
+                    formStatus.className = 'text-center mt-4 text-sm text-red-500';
+                    console.log('ERROR...', error);
+                });
+        });
+
+        lucide.createIcons();
     </script>
-    <script src="scripts/mail.js"></script>
-</head>
-
-<body id="body">
-    <!--[if lt IE 7]>
-                <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-    <!-- Header area -->
-    <header id="header">
-        <div class="center text-center">
-            <h1 class="bigheadline">Sonic Rebel Studio</h1>
-            <h4 class="subheadline">Donde tu música se convierte en leyenda</h4>
-        </div>
-        <div class="bottom">
-            <a data-scroll href="#navigation" class="scrollDown animated pulse" id="scrollToContent"><i
-                    class="pe-7s-angle-down-circle pe-va"></i></a>
-        </div>
-    </header>
-
-    <!-- Navigation area -->
-    <section id="navigation">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-6">
-                    <div class="logo"><a data-scroll href="#body" class="logo-text">Sonic Rebel Studio</a></div>
-                </div>
-                <div class="col-xs-6">
-                    <div class="nav">
-                        <a href="#" data-placement="bottom" title="Menu" class="menu" data-toggle="dropdown"><i
-                                class="pe-7s-menu"></i></a>
-                        <div class="dropdown-menu">
-                            <div class="arrow-up"></div>
-                            <ul>
-                                <li><a data-scroll href="#body">Home <i class="pe-7s-home"></i></a><span
-                                        class="menu-effect"></span></li>
-                                <li><a data-scroll href="#services">Servicios <i class="pe-7s-config"></i></a><span
-                                        class="menu-effect"></span></li>
-                                <li><a data-scroll href="#portfolio">Portfolio <i class="pe-7s-glasses"></i></a><span
-                                        class="menu-effect"></span></li>
-                                <li><a data-scroll href="#contact">Contact <i class="pe-7s-help1"></i></a><span
-                                        class="menu-effect"></span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Content Area -->
-
-    <!-- services section -->
-
-    <section id="services" class="service-area">
-        <div class="container">
-            <h2 class="block_title">Servicios</h2>
-            <div class="row">
-                <div class="col-md-4 col-sm-6 col-xs-12 item-space">
-                    <div class="services">
-                        <div class="service-wrap">
-                            <i class="material-symbols-outlined">genres</i>
-                            <h3>Producción</h3>
-                            <p>Convertimos tu visión en un sonido potente.</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 item-space">
-                    <div class="services">
-                        <div class="service-wrap">
-                            <i class="material-symbols-outlined">instant_mix</i>
-                            <h3>Mezcla</h3>
-                            <p>Elevamos cada instrumento, dándole a tu música la pegada y claridad que merece.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 item-space">
-                    <div class="services">
-                        <div class="service-wrap">
-                            <i class="material-symbols-outlined">equalizer</i>
-                            <h3>Mastering</h3>
-                            <p>Optimizamos tu sonido para que suene enorme en cualquier plataforma.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 item-space">
-                    <div class="services">
-                        <div class="service-wrap">
-                            <i class="material-symbols-outlined">cut</i>
-                            <h3>Edición</h3>
-                            <p>Perfeccionamos tus tomas, ajustando voces y ritmos para una ejecución impecable.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 item-space">
-                    <div class="services">
-                        <div class="service-wrap">
-                            <i class="material-symbols-outlined">dialpad</i>
-                            <h3>Programación</h3>
-                            <p>Baterías MIDI demoledoras y realistas.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section><!-- services -->
-
-    <!-- Portfolio Area -->
-
-    <section id="portfolio" class="portfolio-area">
-        <div class="container">
-            <h2 class="block_title">Mis Trabajos</h2>
-            <div class="row port cs-style-3">
-                <div class="col-md-4 col-sm-6 col-xs-12 item-space">
-                    <figure>
-                        <iframe width="100%" height="400" scrolling="no" frameborder="no" allow="autoplay"
-                            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2121642396%3Fsecret_token%3Ds-9B74m3pTiMd&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-                        <div
-                            style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
-                            <a href="https://soundcloud.com/sonic-rebel-studio" title="Phartener" target="_blank"
-                                style="color: #cccccc; text-decoration: none;">Phartener</a> ·
-                            <a href="https://soundcloud.com/sonic-rebel-studio/ella-en-su-lugar/s-9B74m3pTiMd"
-                                title="Ella En Su Lugar" target="_blank"
-                                style="color: #cccccc; text-decoration: none;">Ella En Su Lugar</a>
-                        </div>
-                        <figcaption>
-                            <h3>Phartener - Ella En Su Lugar</h3>
-                            <span>Producción - Edición - Mezcla - Master</span>
-                        </figcaption>
-                    </figure>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 item-space">
-                    <figure>
-                        <iframe width="100%" height="400" scrolling="no" frameborder="no" allow="autoplay"
-                            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2121636009%3Fsecret_token%3Ds-fmejDqUJdnI&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-                        <div
-                            style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
-                            <a href="https://soundcloud.com/sonic-rebel-studio" title="Edu Vargas" target="_blank"
-                                style="color: #cccccc; text-decoration: none;">Edu Vargas</a> ·
-                            <a href="https://soundcloud.com/sonic-rebel-studio/edu-vargas-dejate-llevar/s-fmejDqUJdnI"
-                                title="Dejate Llevar" target="_blank"
-                                style="color: #cccccc; text-decoration: none;">Dejate Llevar</a>
-                        </div>
-                        <figcaption>
-                            <h3>Edu Vargas - Dejate Llevar</h3>
-                            <span>Remix</span>
-                        </figcaption>
-                    </figure>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 item-space">
-                    <figure>
-                        <iframe width="100%" height="400" scrolling="no" frameborder="no" allow="autoplay"
-                            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2121643917%3Fsecret_token%3Ds-cbCl8jtwVqG&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-                        <div
-                            style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
-                            <a href="https://soundcloud.com/sonic-rebel-studio" title="Phartener" target="_blank"
-                                style="color: #cccccc; text-decoration: none;">Phartener</a> ·
-                            <a href="https://soundcloud.com/sonic-rebel-studio/07-buenas-decisiones/s-cbCl8jtwVqG"
-                                title="Buenas Decisiones" target="_blank"
-                                style="color: #cccccc; text-decoration: none;">Buenas Decisiones</a>
-                        </div>
-                        <figcaption>
-                            <h3>Phartener - Buenas Decisiones</h3>
-                            <span>Producción - Edición - Mezcla - Master</span>
-                        </figcaption>
-                    </figure>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 item-space">
-                    <figure>
-                        <iframe width="100%" height="400" scrolling="no" frameborder="no" allow="autoplay"
-                            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2081788395%3Fsecret_token%3Ds-tTwQyrQJnPq&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-                        <div
-                            style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
-                            <a href="https://soundcloud.com/sonic-rebel-studio" title="John McKay" target="_blank"
-                                style="color: #cccccc; text-decoration: none;">John McKay"/a> ·
-                                <a href="https://soundcloud.com/sonic-rebel-studio/john-mckay-daisy-daisy-sonic-rebel-studio-mix/s-tTwQyrQJnPq"
-                                    title="Daisy Daisy" target="_blank"
-                                    style="color: #cccccc; text-decoration: none;">Daisy Daisy</a>
-                        </div>
-                        <figcaption>
-                            <h3>John McKay - Daisy Daisy</h3>
-                            <span>Remix</span>
-                        </figcaption>
-                    </figure>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 item-space">
-                    <figure>
-                        <iframe width="100%" height="400" scrolling="no" frameborder="no" allow="autoplay"
-                            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1958696899%3Fsecret_token%3Ds-YCpHllVmect&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-                        <div
-                            style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
-                            <a href="https://soundcloud.com/sonic-rebel-studio" title="Shecky & the Pimp Monkeys"
-                                target="_blank" style="color: #cccccc; text-decoration: none;">Shecky & the Pimp
-                                Monkeys</a> ·
-                            <a href="https://soundcloud.com/sonic-rebel-studio/volkswagen-blondes/s-YCpHllVmect"
-                                title="Volkswagen Blondes" target="_blank"
-                                style="color: #cccccc; text-decoration: none;">Volkswagen Blondes</a>
-                        </div>
-                        <figcaption>
-                            <h4>Shecky & the Pimp Monkeys - Volkswagen Blondes</h4>
-                            <span>Remix</span>
-                        </figcaption>
-                    </figure>
-                </div>
-            </div>
-        </div><!-- container -->
-    </section><!-- portfolio -->
-
-    <!-- Contact Area -->
-
-    <section id="contact" class="mapWrap">
-        <div id="contact-area">
-            <div class="container">
-                <h2 class="block_title">Contactanos</h2>
-                <div class="row">
-                    <div class="col-xs-12">
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="moreDetails">
-                            <p>
-                                ¿Listo para llevar tu sonido al siguiente nivel? En Sonic Rebel Studio, estamos listos
-                                para escucharte y transformar tu visión en una producción legendaria. Ya sea rock, punk,
-                                hard rock o metal, queremos ser parte de tu próximo gran lanzamiento.
-                            </p>
-                            <p>
-                                Contáctanos hoy mismo para más información, consultar tarifas o simplemente charlar
-                                sobre cómo podemos hacer que tu música suene potente y profesional.
-                            </p>
-                            <p>
-                                ¡Tu leyenda comienza aquí!
-                            </p>
-                            <ul class="address">
-                                <li><i class="pe-7s-mail"></i><span>sonicrebelstudio@gmail.com</span></li>
-                                <li><i class="pe-7s-global"></i><span><a href="#">www.sonicrebelstudio.com.ar</a></span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <h2 class="con-title">Envianos un mensaje</h2>
-                        <form role="form">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="name" id="name" placeholder="Nombre">
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Email">
-                            </div>
-                            <div class="form-group">
-                                <textarea name="InputMessage" name="message" id="message" class="form-control" rows="5"
-                                    placeholder="Mensaje" required></textarea>
-                            </div>
-
-                            <button type="submit" class="btn medium" onclick="sendEmail()">Enviar</button>
-                        </form>
-                    </div>
-                </div>
-            </div><!-- container -->
-        </div><!-- contact-area -->
-        <div id="social">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <ul class="socialinks">
-                            <li class="normal-txt">Nuestras Redes</li>
-                            <li class="social-icons"><a href="https://www.facebook.com/SonicRebelStudio" target="_blank"
-                                    style="color: #ffffff; text-decoration: none;"><i
-                                        class="fa-brands fa-facebook-f fa-4x" style="color: #ffffff;"></i></a></li>
-                            <li class="social-icons"><a href="https://www.instagram.com/sonicrebelstudio"
-                                    target="_blank" style="color: #ffffff; text-decoration: none;"><i
-                                        class="fa-brands fa-instagram fa-4x" style="color: #ffffff;"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div><!-- social -->
-    </section><!-- contact -->
-
-    <!-- Footer Area -->
-
-    <footer>
-        <div class="container">
-            <div class="row">
-            </div>
-        </div>
-    </footer>
-
-    <!-- Necessery scripts -->
-    <script src="assets/js/jquery-2.1.3.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-    <script src="assets/js/jquery.actual.min.js"></script>
-    <script src="assets/js/smooth-scroll.js"></script>
-    <script src="assets/js/owl.carousel.js"></script>
-    <script src="assets/js/script.js"></script>
-
 </body>
-
 </html>
